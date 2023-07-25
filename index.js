@@ -1,4 +1,4 @@
-numberOfButtons = document.querySelectorAll("button").length
+numberOfButtons = document.querySelectorAll("button").length;
 var display ="";
 
 for (var i=0; i<numberOfButtons; i++) { //Click event listener
@@ -6,9 +6,9 @@ for (var i=0; i<numberOfButtons; i++) { //Click event listener
         buttonName = this.innerHTML //Check button name
         
         if (buttonName == "="){ //= is pressed
-            answer = calculator(display)
-            console.log(answer)
-            display = answer
+            answer = calculator(display);
+            console.log(answer);
+            display = answer;
             document.querySelector(".output").innerText = display;
         }
         else if (buttonName == "Clear"){ //Clear is pressed; resets display to blank
@@ -24,21 +24,42 @@ for (var i=0; i<numberOfButtons; i++) { //Click event listener
 }
 
 function calculator(display) { //Calculator that converts string to math
-    if (display.includes("+")){
-        display = display.split("+");
-        answer = parseFloat(display[0])+parseFloat(display[1])
+    if(display[0] == "-") {
+        display = display.slice(1,);
+        if (display.includes("+")){
+            display = display.split("+");
+            answer = -parseFloat(display[0])+parseFloat(display[1]);
+        }
+        else if (display.includes("-")){
+            display = display.split("-");
+            answer = -parseFloat(display[1])-parseFloat(display[2]);
+        }
+        else if (display.includes("*")){
+            display = display.split("*");
+            answer = -parseFloat(display[0])*parseFloat(display[1]);
+        }
+        else if (display.includes("/")){
+            display = display.split("/");
+            answer = -parseFloat(display[0])/parseFloat(display[1]);
+        }
     }
-    else if (display.includes("-")){
-        display = display.split("-");
-        answer = parseFloat(display[0])-parseFloat(display[1])
+    else {
+        if (display.includes("+")){
+            display = display.split("+");
+            answer = parseFloat(display[0])+parseFloat(display[1]);
+        }
+        else if (display.includes("-")){
+            display = display.split("-");
+            answer = parseFloat(display[0])-parseFloat(display[1]);
+        }
+        else if (display.includes("*")){
+            display = display.split("*");
+            answer = parseFloat(display[0])*parseFloat(display[1]);
+        }
+        else if (display.includes("/")){
+            display = display.split("/");
+            answer = parseFloat(display[0])/parseFloat(display[1]);
+        }
     }
-    else if (display.includes("*")){
-        display = display.split("*");
-        answer = parseFloat(display[0])*parseFloat(display[1])
-    }
-    else if (display.includes("/")){
-        display = display.split("/");
-        answer = parseFloat(display[0])/parseFloat(display[1])
-    }
-    return answer
+    return answer;
 }
