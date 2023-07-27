@@ -32,6 +32,10 @@ body {
     width: 28.5rem
 }
 
+button {
+    cursor: pointer
+}
+
 @media only screen and (max-width: 600px) {
     .format {
         width: 20rem;
